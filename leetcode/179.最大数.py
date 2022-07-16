@@ -5,8 +5,9 @@
 #
 
 # @lc code=start
-import functools
-from turtle import Turtle
+from re import L
+
+
 class Solution:
     def largestNumber(self, nums: list[int]) -> str:
         def cmp(a,b):
@@ -14,20 +15,15 @@ class Solution:
                 return a>b
             else:
                 # 34>3>30
-                if len(a)<len(b):
-                    return not cmp(b,a)
-                nb=b+"0"*(len(a)-len(b))
-                if nb==a:
-                    return False
-                else:
-                    return a>nb
+                t1=a+b
+                t2=b+a
+                return t1>t2
         nums=[str(i) for i in nums]
         for i in range(len(nums)):
             for j in range(i+1,len(nums)):
-                if cmp(nums[i],nums[j]):
+                if not cmp(nums[i],nums[j]):
                     nums[i],nums[j]=nums[j],nums[i]
-        print(nums)
-        return "".join(nums[::-1])
+        if nums[0]=='0':return '0'
+        return "".join(nums)
 # @lc code=end
 
-print(Solution().largestNumber([3,30,34,5,9]))
