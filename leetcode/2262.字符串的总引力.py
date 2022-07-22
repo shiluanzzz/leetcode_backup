@@ -7,6 +7,14 @@
 # @lc code=start
 class Solution:
     def appealSum(self, s: str) -> int:
-        # TODO 以前做过现在还是不会做。
+        # reivew 面向解析做的 TODO 没理解
+        # dp[i] 表示以第i个字符为结尾的字符串总引力
+        dp=[0]*len(s)
+        d={}
+        for i,v in enumerate(s):
+            dp[i] -= d.get(v,-1)
+            dp[i] += dp[i-1] + i
+            d[v]=i
+        return sum(dp)
 # @lc code=end
 
