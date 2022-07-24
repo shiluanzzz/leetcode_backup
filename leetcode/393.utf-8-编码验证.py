@@ -7,6 +7,6 @@
 # @lc code=start
 class Solution:
     def validUtf8(self, data: list[int]) -> bool:
-        #TODO
+        #@TODO
 # @lc code=end
 

@@ -19,5 +19,6 @@ class Solution:
                 if j>=i and nums2[j]>=nums1[i]:
                     ans=j-i
         return ans
+        
 # @lc code=end
 

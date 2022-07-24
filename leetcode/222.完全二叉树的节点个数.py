@@ -30,6 +30,6 @@ class Solution:
             if temp.left:ll.append(temp.left)
             if temp.right:ll.append(temp.right)
         return ans
-    # TODO 解法2 利用完全二叉树的特性+二分查找
+    # @TODO 解法2 利用完全二叉树的特性+二分查找
 # @lc code=end
 
