@@ -1,4 +1,4 @@
-def test_func(func, in_path="D:\project\PyProject\leetcode_record\in.txt", out_path="D:\project\PyProject\leetcode_record\out.txt"):
+def test_func(func, in_path="./in.txt", out_path="./out.txt"):
     print("func name:", func.__name__)
     params = func.__annotations__
     if "return" in params.keys():
