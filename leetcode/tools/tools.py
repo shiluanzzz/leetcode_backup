@@ -29,8 +29,9 @@ def test_func_batch(func, in_content=""):
         p = [eval(i.strip()) for i in p]
         try:
             begin_time = time.time()
+            print("input :{}".format(p))
             res = func(*p)
-            print("input :{} \noutput:{}\nspend :{} ms".format(p, res, (time.time() - begin_time)*1000))
+            print("output:{}\nspend :{} ms".format(res, (time.time() - begin_time)*1000))
         except Exception as e:
             print("PANIC!!", e)
             print("input :{}".format(p))
