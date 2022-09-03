@@ -31,4 +31,3 @@ if __name__ == '__main__':
     """
     from leetcode import tools
 
-    tools.test_func_batch(Solution()., params)
