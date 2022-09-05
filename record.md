@@ -1,6 +1,16 @@
 # 算法题刷题记录
 
 - [x](leetcode/editor/cn/x.py)
+## 20220905 
+- [652](leetcode/editor/cn/652.py)
+  - 踩坑：不能直接用str(node)来标记一颗树
+  - 使用二叉树的后序遍历或者前序遍历来标记一棵树而不是中序遍历
+    - 前序: 根左右 中序：左根右 后序：左右根
+- [面试题 01.01.判定字符是否唯一](leetcode/editor/cn/面试题%2001.01.py)
+  -  最优解法就是用位运算，但是我不会- -
+- [197.上升的温度](leetcode/editor/cn/197.sql)
+  - SQL题做的太少了，这个需要用到dateDiff()函数来计算两个日期之间的差值
+- [867.转置矩阵](leetcode/editor/cn/867.py) 理清二维矩阵的row,column即可
 
 ## 20220904 
 - [周赛01](leetcode/competition/6167.py) 简单题看懂题意就行
