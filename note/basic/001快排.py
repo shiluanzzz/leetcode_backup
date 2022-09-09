@@ -1,33 +1,30 @@
-def partition(arr,low,high): 
-    print("in",arr[low:high+1])
-    i = ( low-1 )         # 最小元素索引
-    pivot = arr[high]     
-    for j in range(low , high): 
-        # 当前元素小于或等于 pivot 
-        if   arr[j] <= pivot: 
-            i = i+1 
-            arr[i],arr[j] = arr[j],arr[i] 
-  
-    arr[i+1],arr[high] = arr[high],arr[i+1] 
-    print("ou",arr[low:high+1])
-    return ( i+1 ) 
- 
-# arr[] --> 排序数组
-# low  --> 起始索引
-# high  --> 结束索引
-  
-# 快速排序函数
-def quickSort(arr,low,high): 
-    if low < high: 
-  
-        pi = partition(arr,low,high) 
-  
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high) 
-  
-arr = [10, 7, 8, 9, 1, 5] 
-n = len(arr) 
-quickSort(arr,0,n-1) 
-print ("排序后的数组:") 
-for i in range(n): 
-    print ("%d" %arr[i]),
+import random
+
+
+def quick_sort(arr, left, right):
+    # print("in:", arr[left:right + 1])
+    if left >= right:
+        return arr
+    pivot = arr[left]
+    # j = 0
+    low, high = left, right
+    while low < high:
+        # 右边拿一个比基准小的数与之交换
+        while low < high and arr[high] >= pivot:
+            high -= 1
+        arr[low], arr[high] = arr[high], arr[low]
+        # 从左边开始拿一个比基准大的数与之交换
+        while low < high and arr[low] <= pivot:
+            low += 1
+        arr[low], arr[high] = arr[high], arr[low]
+    # low 就是最终pivot所在的位置
+    quick_sort(arr, 0, low - 1)
+    quick_sort(arr, low + 1, right)
+    return arr
+
+
+n = 10
+arr = [random.randint(0, 10) for _ in range(n)]
+print("原始数组", arr)
+# arr = [0, 2, 6, 7, 8, 8, 3, 0, 5, 5]
+print("快排结果", quick_sort(arr, 0, len(arr) - 1))
