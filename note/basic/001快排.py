@@ -18,7 +18,7 @@ def quick_sort(arr, left, right):
             low += 1
         arr[low], arr[high] = arr[high], arr[low]
     # low 就是最终pivot所在的位置
-    quick_sort(arr, 0, low - 1)
+    quick_sort(arr, left, low - 1)
     quick_sort(arr, low + 1, right)
     return arr
 

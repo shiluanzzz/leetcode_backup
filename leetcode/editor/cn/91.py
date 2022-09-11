@@ -1,25 +1,28 @@
-# -*- coding:utf-8 -*-
-# __author__ = "shiluanzzz"
+# 创建时间:2022-09-08 23:05:08
 
-def solve(s)->int:
-    keyd={1:"A"} #"a chr 97"
-    for i in range(1,27):
-        keyd[i]=chr(64+i)
-    # print(keyd)
-    n=len(s)
-    i=0
-    result=0
-    while i<n:
-        k=i+1
-        while k<=n:
-            if int(s[i:k]) in keyd.keys():
-                result+=1
-                print(s[i:k])
-                k+=1
-            else:
-                break
-        i=k-1
-    return result
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        # dp: s的前i个字符串可以有几种解码方法,
+        # 最后的结果想到与s加上一个空字符串
+        dp = [1] + [0] * len(s)
+        for i in range(1, len(s) + 1):
+            if s[i - 1] != '0':
+                dp[i] += dp[i - 1]
+            if i - 2 >= 0 and s[i - 2] != '0' and int(s[i - 2:i]) <= 26:
+                dp[i] += dp[i - 2]
+        return dp[- 1]
+    # leetcode submit region end(Prohibit modification and deletion)
 
-a=solve("226")
-print(a)
+
+if __name__ == '__main__':
+    params = """
+    "12"
+    "226"
+    "0"
+    "10"
+    "12"
+    """
+    from leetcode import tools
+
+    tools.test_func_batch(Solution().numDecodings, params)

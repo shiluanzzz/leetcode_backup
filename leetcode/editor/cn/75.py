@@ -4,6 +4,27 @@
 
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
+        # 基于快排做，以1为中轴
+        def sort(nums, left, right):
+            if left >= right: return nums
+
+            low, high = left, right
+            base = nums[low]
+            while low < high:
+                while low < high and nums[high] >= base:
+                    high -= 1
+                nums[low], nums[high] = nums[high], nums[low]
+                while low < high and nums[low] <= base:
+                    low += 1
+                nums[low], nums[high] = nums[high], nums[low]
+            # 下一次快排的位置，应该是left和right相关的
+            sort(nums, left, low)
+            sort(nums, low + 1, right)
+
+        sort(nums, 0, len(nums) - 1)
+        return nums
+
+    def sortColors1(self, nums: list[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
@@ -38,6 +59,7 @@ if __name__ == '__main__':
     params = """
     [2,0,2,1,1,0]
     [0,0,0,0,1,1,1,0,2]
+    [2,2,1,2,1,1,1,0,0,2,1,0,2,1,2,2,1,1,1,1,1,0,2,0,2,0,2,2,1,0,2,1,0,2,1,2,0,0,0,0,2,1,1,2,0,1,2,2,0,0,2,2,0,1,0,1,0,0,1,1,1,0,0,2,2,2,1,0,0,2,1,0,1,0,2,2,1,2,1,1,2,1,1,0,0,2,1,0,0]
     """
     from leetcode import tools
 
