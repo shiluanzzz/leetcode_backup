@@ -2,6 +2,13 @@
 
 - [x](leetcode/editor/cn/x.py)
 
+## 20220912
+
+- [1608.特殊数组的特征值](leetcode/editor/cn/1608.py)
+- [912.排序数组](leetcode/editor/cn/912.py) 手撕排序算法
+    1. 快排(原理懂写起来还是不熟练)
+    2. 计数排序
+    3. 桶排序 TODO 思想看懂了
 ## 20220909
 
 - [91](leetcode/editor/cn/91.py)

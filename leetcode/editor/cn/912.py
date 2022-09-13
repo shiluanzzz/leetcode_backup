@@ -87,17 +87,48 @@ class Solution:
 
         return sort(nums)
 
+    def count_sort(self, nums):
+        min_v, max_v = min(nums), max(nums)
+        cnt = [0] * (max_v - min_v + 1)
+        for v in nums:
+            cnt[v - min_v] += 1
+        res = []
+        for i, v in enumerate(cnt):
+            res = res + [min_v + i] * v
+        return res
+
+    def quick_sort(self, nums):
+        def _sort(nums, left, right):
+            if left >= right:
+                return
+            low, high = left, right
+            base = nums[low]
+            while low < high:
+                while low < high and nums[high] >= base:
+                    high -= 1
+                nums[high], nums[low] = nums[low], nums[high]
+                while low < high and nums[low] <= base:
+                    low += 1
+                nums[high], nums[low] = nums[low], nums[high]
+            _sort(nums, left, low - 1)
+            _sort(nums, low + 1, right)
+            return nums
+
+        return _sort(nums, 0, len(nums) - 1)
+
 
 # leetcode submit region end(Prohibit modification and deletion)
 
 if __name__ == '__main__':
     from leetcode import tools
 
-    size = 10000
+    size = 10
     arr = [random.randint(0, 10) for _ in range(size)]
 
-    tools.test_func(Solution().bubble_sort, arr[:])
-    tools.test_func(Solution().select_sort, arr[:])
-    tools.test_func(Solution().insert_sort, arr[:])
+    # tools.test_func(Solution().bubble_sort, arr[:])
+    # tools.test_func(Solution().select_sort, arr[:])
+    # tools.test_func(Solution().insert_sort, arr[:])
     tools.test_func(Solution().shell_sort, arr[:])
     tools.test_func(Solution().merge_sort, arr[:])
+    tools.test_func(Solution().count_sort, arr[:])
+    tools.test_func(Solution().quick_sort, arr[:])
