@@ -1,5 +1,5 @@
 /.idea/*
 /leetcode/editor/cn/doc/*
-*/.__pycache__/*
+*/__pycache__/*
 /.vscode
 *.pyc
